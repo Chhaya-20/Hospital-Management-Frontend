@@ -1,0 +1,43 @@
+.sidebar{
+    width: 250px;
+    height: 98vh;
+  
+    background-color: #80808047;
+    color: blue;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar ul{
+    margin-top: 50px;
+    list-style-type: none;
+    padding: 0%;
+}
+.sidebar ul li a{
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-bottom: 2px solid;
+}
+.sidebar ul  li a:hover{
+    background-color: rgba(128, 128, 128, 0.445);
+}
+.sidebar button{
+    position: absolute;
+    bottom: 20px;
+    left: 75px;
+}
+
+.sidebar-link.active {
+    background-color: #3333336b; /* Example darker background color */
+  }
+
+
+  .active {
+    background-color: #33333338; /* Change to the desired darker color */
+    color: white; /* Change the text color if necessary */
+  }
+  
+  
