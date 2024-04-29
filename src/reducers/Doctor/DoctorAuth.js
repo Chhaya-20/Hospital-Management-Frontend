@@ -40,7 +40,7 @@ export const createuser = createAsyncThunk(
   "createuser",
   async (data, { rejectWithValue }) => {
     try {
-    console.log(data)
+       console.log(data)
       const { name, email, password ,experience , specialities , qualification} = data;
      
      

@@ -63,7 +63,7 @@ export const createuser = createAsyncThunk(
       }
 
       const responseData = await response.json();
-      localStorage.setItem("doctor", responseData.token);
+      localStorage.setItem("patient", responseData.token);
 
       return responseData;
     } catch (error) {

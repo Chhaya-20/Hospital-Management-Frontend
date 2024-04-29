@@ -11,29 +11,31 @@ function PatientPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!localStorage.getItem("patient")) {
+    if (!localStorage.getItem('patient')) {
       navigate("/login");
-    } else {
-    
-      setLoading(true);
-      dispatch(getSlot())
-        .unwrap()
-        .then((response) => {
-          setLoading(false);
-          if (!response || response.length === 0) {
-            setSlots([]);
-          } else {
-            setSlots(response);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          setLoading(false);
-          alert("An error occurred. Please try again.");
-        });
     }
-  }, []);
 
+    setLoading(true); 
+
+    const fetchData = async () => {
+      try {
+        const response = await dispatch(getSlot()).unwrap();
+        setLoading(false);
+        if (!response || response.length === 0) {
+          setSlots([]);
+        } else {
+          setSlots(response);
+        }
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+        alert("An error occurred. Please try again.");
+      }
+    };
+
+    fetchData();
+
+  }, [dispatch, navigate]);
   
 
   const Book = (id)=>{

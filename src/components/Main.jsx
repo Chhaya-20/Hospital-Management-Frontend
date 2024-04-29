@@ -15,9 +15,9 @@ function Main() {
       }
     };
 
-    redirectToPage(); // Call the function immediately
+    redirectToPage(); 
 
-    // Note: navigate is added as a dependency
+  
   }, [navigate]);
 
   return (

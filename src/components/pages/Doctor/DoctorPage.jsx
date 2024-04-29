@@ -12,25 +12,38 @@ function DoctorPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem("doctor")) {
+
+
+    if (!localStorage.getItem('doctor')) {
       navigate("/doctorlogin");
-    } else {
-      setLoading(true);
-      dispatch(getSlot())
-        .then((response) => {
-          setLoading(false);
-          if (!response.payload || response.payload.length === 0) {
-            setSlots([]);
-          } else {
-            setSlots(response.payload);
-          }
-        })
-        .catch((error) => {
-          setLoading(false);
-          alert("An error occurred. Please try again.");
-        });
     }
+
+    setLoading(true); 
+
+    const checkDoctorAuthentication = () => {
+      if (!localStorage.getItem("doctor")) {
+        navigate("/doctorlogin");
+      } else {
+        setLoading(true);
+        dispatch(getSlot())
+          .then((response) => {
+            setLoading(false);
+            if (!response.payload || response.payload.length === 0) {
+              setSlots([]);
+            } else {
+              setSlots(response.payload);
+            }
+          })
+          .catch((error) => {
+            setLoading(false);
+            alert("An error occurred. Please try again.");
+          });
+      }
+    };
+  
+    checkDoctorAuthentication(); 
   }, [dispatch, navigate]);
+  
 
   const deleted = (id) => {
     setLoading(true);

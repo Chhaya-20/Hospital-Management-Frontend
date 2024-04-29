@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { createuser } from '../../reducers/Doctor/DoctorAuth';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,13 +6,10 @@ import Navbar from '../Navbar';
 import '../Styles/Login.css';
 
 function DoctorSignUp() {
-
-
   const [loading, setLoading] = useState(false); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const loginStatus = useSelector((state) => state.Doctor.status);
-  const data =  useSelector((state) => state.Doctor.error);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -30,24 +26,19 @@ function DoctorSignUp() {
       [name]: value
     });
   };
-useEffect(() => {
-  if(localStorage.getItem('doctor'))
-  {
-    navigate('/doctorpage')
-  }
 
-  
-}, [])
-
+  useEffect(() => {
+    if(localStorage.getItem('doctor')) {
+      navigate('/doctorpage');
+    }
+  }, []);
 
   const Signup = (e) => {
     e.preventDefault();
     setLoading(true); 
   
     dispatch(createuser(formData))
-    
       .then((response) => {
-        console.log(response)
         setLoading(false);
         if (response.payload.success) {
           navigate('/doctorpage');
@@ -57,7 +48,6 @@ useEffect(() => {
       })
       .catch((error) => {
         setLoading(false);
-       
         alert("An error occurred. Please try again.");
       });
   };
@@ -144,7 +134,7 @@ useEffect(() => {
               />
             </div>
             <button type="submit" className="btn btn-primary">Sign Up</button>
-            <p className='mb-0'>Already have an account? <a href="/login">Login</a></p>
+            <p className='mb-0'>Already have an account? <Link to="/doctorlogin">Login</Link></p>
           </form>
         </div>
       </div>

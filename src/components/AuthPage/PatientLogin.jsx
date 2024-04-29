@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 import { getuser } from "../../reducers/Patient/PatientAuth";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar";
@@ -8,29 +8,39 @@ import "../Styles/Login.css";
 function PatientLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loginStatus = useSelector((state) => state.Patient.status);
 
-  useEffect(() => {
-    
-    if (loginStatus === "idle") {
-     
-
-      navigate("/patientpage");
-      
-    } else if (loginStatus === "error") {
-      alert("Login failed");
-    }
-  }, [loginStatus]);
-
   const login = async (e) => {
     e.preventDefault();
+    alert("Please Wait ! It may take some time ");
+    setLoading(true);
 
     try {
-      dispatch(getuser({ email, password }));
+      dispatch(getuser({ email, password }))
+      .then((res) => {
+        
+        setLoading(false)
+        if(res.type=="getuser/fulfilled")
+        {
+          console.log("here")
+          navigate("/patientpage")
+        }
+        else{
+          setLoading(false)
+          alert("An error occurred while logging in.");
+        }
+      })
+      .catch((error) => {
+      
+        console.error("Error:", error);
+        setLoading(false);
+        alert("An error occurred while logging in.");
+      });
     } catch (error) {
-      console.error("Error:", error);
+      setLoading(false);
       alert("An error occurred while logging in.");
     }
   };
@@ -38,6 +48,24 @@ function PatientLogin() {
   return (
     <>
       <Navbar />
+      {loading?((
+        <div
+          style={{
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{ height: "10vh" }}
+            src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"
+            alt=""
+          />
+          {/* <p>Loading....</p> */}
+        </div>
+      )):(
 
       <div className="container main" style={{ width: "30%" }}>
         <div className="forms ">
@@ -78,11 +106,11 @@ function PatientLogin() {
               Login
             </button>
             <p>
-              Don't have an account? <a href="/signup">Signup</a>
+              Don't have an account? <Link to="/signup">Signup</Link>
             </p>
           </form>
         </div>
-      </div>
+      </div>)}
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link } from "react-router-dom";
 import { getuser } from "../../reducers/Doctor/DoctorAuth";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar";
@@ -13,17 +13,15 @@ function DoctorLogin() {
   const navigate = useNavigate();
   const loginStatus = useSelector((state) => state.Doctor.status);
 
-  useEffect(() => {
-    if (loginStatus === "idle") {
-      setLoading(true);
-
-      navigate("/doctorpage");
-      setLoading(false);
-    } else if (loginStatus === "error") {
-      setLoading(false);
-      alert("Login failed");
-    }
-  }, [loginStatus, navigate]);
+  // useEffect(() => {
+    
+  //   if (loginStatus === "idle") {
+  //     navigate("/doctorpage");
+      
+  //   } else if (loginStatus === "error") {
+  //     alert("Login failed");
+  //   }
+  // }, [loginStatus]);
 
   const login = async (e) => {
     e.preventDefault();
@@ -32,12 +30,34 @@ function DoctorLogin() {
     setLoading(true);
 
     try {
-      dispatch(getuser({ email, password }));
+      // Dispatch the action to get the user
+      dispatch(getuser({ email, password }))
+        .then((res) => {
+        
+          console.log("Response:", res);
+          if(res.type=="getuser/fulfilled")
+          {
+            console.log("here")
+            navigate("/doctorpage")
+          }
+          else{
+            setLoading(false)
+            alert("An error occurred while logging in.");
+          }
+        })
+        .catch((error) => {
+        
+          console.error("Error:", error);
+          setLoading(false);
+          alert("An error occurred while logging in.");
+        });
     } catch (error) {
+   
       console.error("Error:", error);
       setLoading(false);
       alert("An error occurred while logging in.");
     }
+    
   };
   return (
     <>
@@ -100,7 +120,23 @@ function DoctorLogin() {
                 Login
               </button>
               <p>
-                Don't have an account ? <a href="/doctorsignup">Signup</a>
+                Don't have an account ? <button
+                  style={{ "background": "none",
+                  "border": "none",
+                  "outline": "none",
+                  "boxShadow": "none",
+                  "color":"blue",
+                  "fontWeight":"bold"
+                  }}
+                  onClick={()=>{navigate("/doctorsignup")}} 
+
+
+
+                
+                
+                
+                
+                ><Link to="/doctorsignup">Signup</Link></button>
               </p>
             </form>
           </div>
