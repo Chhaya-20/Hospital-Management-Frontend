@@ -1,0 +1,57 @@
+.dr-thumbslist[_ngcontent-serverApp-c116] {
+    background: #fdf9f2;
+    background: linear-gradient(0deg, #fff, #fff7e7);
+}
+.dr-list {
+    border: 1px solid #d6e5ea;
+    border-radius: 8px;
+}
+
+.abt-drs[_ngcontent-serverApp-c116] img[_ngcontent-serverApp-c116] {
+    border-radius: 4px;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+}
+
+.dr-thumbslist[_ngcontent-serverApp-c116] h3[_ngcontent-serverApp-c116] {
+    color: #e2ae3e;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.dr-thumbslist[_ngcontent-serverApp-c116] .dr-value[_ngcontent-serverApp-c116] {
+    font-size: 13px;
+    padding-bottom: 12px;
+    font-weight: 400;
+}
+
+
+.dr-thumbslist[_ngcontent-serverApp-c116] .data_info[_ngcontent-serverApp-c116], .dr-thumbslist[_ngcontent-serverApp-c116] p[_ngcontent-serverApp-c116] {
+    font-size: 12px;
+}
+
+
+.dr-thumbslist[_ngcontent-serverApp-c116] .dr-value[_ngcontent-serverApp-c116] {
+    font-size: 13px;
+    padding-bottom: 12px;
+    font-weight: 400;
+}
+
+p {
+    letter-spacing: .3px;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 20px;
+    /* color: #7b7b7b; */
+}
+
+.dr-thumbslist[_ngcontent-serverApp-c116] {
+    
+    background: linear-gradient(0deg, #fff, #fff7e7);
+}
+
+.dr-thumbslist[_ngcontent-serverApp-c116] .data_info[_ngcontent-serverApp-c116], .dr-thumbslist[_ngcontent-serverApp-c116] p[_ngcontent-serverApp-c116] {
+    font-size: 15px;
+}

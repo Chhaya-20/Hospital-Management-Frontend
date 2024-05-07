@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { AddSlots } from '../../../reducers/Doctor/Slot'
 import Sidebar from './Sidebar';
 import './style.css'
+import Navbar from './Navbar';
 
 function AddSlot() {
   const [start, setstart] = useState("");
@@ -15,6 +16,27 @@ function AddSlot() {
       navigate('/doctorlogin');
     }
   })
+
+
+  const [showNavbar, setShowNavbar] = useState(false);
+  const[sidebar,setside]=useState(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 800) {
+        setShowNavbar(true);
+        setside(false)
+      } else {
+        setShowNavbar(false);
+        setside(true)
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call initially to set navbar visibility based on screen size
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
 
   const addslots = (e) => {
@@ -48,11 +70,12 @@ function AddSlot() {
   return (
     <>
       <div className='row'>
-        <div className="col-2">
-          <Sidebar />
+      {showNavbar && <Navbar />}
+        <div className={`col-xxl-2 col-xl-2 col-lg-2 col-md-3  ${showNavbar ? 'col-0' : ''}`}>
+        {sidebar && <Sidebar />}
         </div>
         
-        <div className="col-10 mt-5">
+        <div className={`col-xxl-10 col-xl-10 mt-5 col-lg-10 col-md-9 ${showNavbar ? 'col-12' : ''}`}>
 
 
         {loading ? (

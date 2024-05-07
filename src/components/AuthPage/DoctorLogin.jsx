@@ -66,8 +66,8 @@ function DoctorLogin() {
       {loading ? (
         <div
           style={{
-            height: "100vh",
-            width: "100vw",
+            height: "90vh",
+            width: "90vw",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -81,7 +81,7 @@ function DoctorLogin() {
           {/* <p>Loading....</p> */}
         </div>
       ) : (
-        <div className="container main" style={{ width: "30%" }}>
+        <div className="container main my-5 ">
           <div className="forms ">
             <h2>Login As Doctor</h2>
             <hr />

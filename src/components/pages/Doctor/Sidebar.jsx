@@ -21,11 +21,12 @@ function Sidebar() {
         <li><Link to='/addslot' className={location.pathname === '/addslot' ? 'active' : ''}>Add Slot</Link></li>
         <li><Link to='/bookslots' className={location.pathname === '/bookslots' ? 'active' : ''}>Booked Slot</Link></li>
         <li><Link to='/profile' className={location.pathname === '/profile' ? 'active' : ''}>Manage Profile</Link></li>
+        <li> <button onClick={Logout} className='mt-4 btn btn-primary'>
+        Logout
+      </button></li>
         {/* <li><Link to='' className=''> </Link></li> */}
       </ul>
-      <button onClick={Logout} className='btn btn-primary'>
-        Logout
-      </button>
+    
     </div>
   );
 }

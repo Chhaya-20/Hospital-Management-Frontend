@@ -4,6 +4,7 @@ import { getSlot } from "../../../reducers/Doctor/AllSlot";
 import { DeleteSlot, EditSlot } from "../../../reducers/Doctor/Slot";
 import { useDispatch } from "react-redux";
 import Sidebar from "./Sidebar";
+import Navbar from "./Navbar";
 
 function DoctorPage() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function DoctorPage() {
         setLoading(true);
         dispatch(getSlot())
           .then((response) => {
+           
             setLoading(false);
             if (!response.payload || response.payload.length === 0) {
               setSlots([]);
@@ -43,6 +45,27 @@ function DoctorPage() {
   
     checkDoctorAuthentication(); 
   }, [dispatch, navigate]);
+
+
+  const [showNavbar, setShowNavbar] = useState(false);
+  const[sidebar,setside]=useState(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 800) {
+        setShowNavbar(true);
+        setside(false)
+      } else {
+        setShowNavbar(false);
+        setside(true)
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call initially to set navbar visibility based on screen size
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
 
   const deleted = (id) => {
@@ -99,16 +122,19 @@ function DoctorPage() {
 
   return (
     <>
+     {showNavbar && <Navbar />}
       <div className="row">
-        <div className="col-2">
-          <Sidebar />
+     
+        <div className={`col-xxl-2 col-xl-2 col-lg-2 col-md-3  ${showNavbar ? 'col-0 ' : ''}`}>
+          {sidebar && <Sidebar />}
         </div>
-        <div className="col-10 mt-5">
+        <div className={`col-xxl-10 col-xl-10 mt-5 col-lg-10 col-md-9 ${showNavbar ? 'col-12 m-0' : ''}`}>
+
           {loading ? (
             <div
               style={{
                 height: "100vh",
-                width: "100vw",
+                width: "80vw",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -123,7 +149,7 @@ function DoctorPage() {
           ) : (
             <>
               {Array.isArray(slots) && slots.length > 0 ? (
-                <div className="container slot">
+                <div className=" slot">
                   <h1>Your Slots</h1>
                   <table className="table table-striped">
                     <thead>

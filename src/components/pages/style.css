@@ -1,3 +1,12 @@
 .nav-link.active {
     font-weight: bold;
 }
+.footer{
+    width: 100vw;
+    position:fixed;
+    bottom: 0px;
+
+    background-color: #007291;
+    color: #fff;
+    padding: 10px;
+}

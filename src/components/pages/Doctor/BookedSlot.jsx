@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import { useNavigate } from "react-router-dom";
 import {BookSlot} from '../../../reducers/Doctor/Slot'
 import { useDispatch } from "react-redux";
+import Navbar from "./Navbar";
 
 import './style.css'
 
@@ -38,13 +39,35 @@ function BookedSlot() {
   }, []);
 
 
+  const [showNavbar, setShowNavbar] = useState(false);
+  const[sidebar,setside]=useState(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 800) {
+        setShowNavbar(true);
+        setside(false)
+      } else {
+        setShowNavbar(false);
+        setside(true)
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call initially to set navbar visibility based on screen size
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
 
 
   return (
+    <>
+    {showNavbar && <Navbar />}
 <div className="row">
-        <div className="col-2">
-          <Sidebar />
-        </div>
+        <div className={`col-xxl-2 col-xl-2 col-lg-2 col-md-3  ${showNavbar ? 'col-0' : ''}`}>
+        {sidebar && <Sidebar />}
+             </div>
         {loading ? (
           <div
             style={{
@@ -64,7 +87,7 @@ function BookedSlot() {
         ) : (
           <>
             {Array.isArray(slots) && slots.length > 0 ? (
-              <div className="col-10 mt-5">
+              <div cclassName={`col-xxl-10 col-xl-10 mt-5 col-lg-10 col-md-9 ${showNavbar ? 'col-12' : ''}`}>
                 <div className="container slot">
                   <h1>Your booked Slots</h1>
                   <table className="table table-striped mt-4">
@@ -90,13 +113,14 @@ function BookedSlot() {
                 </div>
               </div>
             ) : (
-              <div className="d-flex flex-column justify-content-center align-items-center col-10 mt-5">
+              <div className={`d-flex  col-lg-10 col-md-9 flex-column justify-content-center align-items-center  mt-5  ${showNavbar ? 'col-12' : ''}`}>
                 <h3>You have no booked slots yet.</h3>
               </div>
             )}
           </>
         )}
       </div>
+      </>
   )
 }
 

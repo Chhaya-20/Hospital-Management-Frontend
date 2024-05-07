@@ -1,10 +1,10 @@
 .sidebar{
-    width: 250px;
+    /* width: 250px; */
     height: 98vh;
   
     background-color: #80808047;
     color: blue;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -24,14 +24,15 @@
 .sidebar ul  li a:hover{
     background-color: rgba(128, 128, 128, 0.445);
 }
-.sidebar button{
-    position: absolute;
+/* .sidebar button{
+    position: absolute; 
     bottom: 20px;
     left: 75px;
-}
+    margin-top: 100%;
+} */
 
 .sidebar-link.active {
-    background-color: #3333336b; /* Example darker background color */
+    background-color: #3333336b; /* Example darker background color
   }
 
 

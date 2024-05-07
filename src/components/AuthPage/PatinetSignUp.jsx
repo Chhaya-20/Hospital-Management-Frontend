@@ -60,7 +60,7 @@ function PatinetSignUp() {
   return (
     <>
     <Navbar/>
-    <div className="container main" style={{"width":"40%"}}>
+    <div className="container main my-5" style={{"width":"40%"}}>
      
       <div className="forms ">
       <h2>Create Patient Account</h2>

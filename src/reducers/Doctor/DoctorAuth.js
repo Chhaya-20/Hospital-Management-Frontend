@@ -14,7 +14,7 @@ const getuser = createAsyncThunk(
       const { email, password } = data;
      
 
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/doctor/login", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/doctor/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,26 +41,56 @@ export const createuser = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
        console.log(data)
-      const { name, email, password ,experience , specialities , qualification} = data;
+      const { name, email, password ,experience , specialities , qualification,gender,locality,seat} = data;
      
      
 
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/doctor/signup", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/doctor/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password ,experience , specialities , qualification }),
+        body: JSON.stringify({ name, email, password ,experience , specialities , qualification ,gender,locality,seat}),
       });
-     
+     console.log(response)
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message);
       }
 
       const responseData = await response.json();
+      console.log(responseData);
       localStorage.setItem("doctor", responseData.token);
 
+      return responseData;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+
+
+export const getdoctor = createAsyncThunk(
+  "getdoctor",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/doctor/getbyId", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("id")}`,
+
+        }
+      });
+    
+      if (!response.ok) {
+        throw new Error("Login Failed");
+      }
+
+      const responseData = await response.json();
+      localStorage.setItem("doctor", responseData.token);
+     
       return responseData;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -106,6 +136,20 @@ const DoctorSlice = createSlice({
       state.status = STATUSES.IDLE;
     });
     builder.addCase(createuser.rejected, (state, action) => {
+      state.status = STATUSES.ERROR;
+      state.error = action.payload;
+    });
+
+
+
+    builder.addCase(getdoctor.pending, (state) => {
+      state.status = STATUSES.LOADING;
+    });
+    builder.addCase(getdoctor.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.status = STATUSES.IDLE;
+    });
+    builder.addCase(getdoctor.rejected, (state, action) => {
       state.status = STATUSES.ERROR;
       state.error = action.payload;
     });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import './Styles/Main.css'
 
 function Navbar() {
   const navigate = useNavigate();
@@ -28,18 +29,87 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar bg-body-tertiary mb-5">
-        <div className="container-fluid">
-          <a href='/' className="navbar-brand"><img src="https://user-images.githubusercontent.com/100460788/215811132-40070d36-862a-4154-adc0-903c6fa65394.jpg" alt="Logo" width="45" height="45" className="d-inline-block align-text-top"/></a>
-          <form className="d-flex">
-            <button className="btn btn-primary" type="button" onClick={()=>handleClick(buttonText)}>{buttonText}</button>
-          </form>
-        </div>
-      </nav>
+    
+
+<app-header>
+        <header >
+          <div
+            
+            className="d-flex align-items-center justify-content-between py-1 "
+          >
+            <button
+              
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#hambergurMenu"
+              id="header_hamburger"
+              className="navbar-toggler p-0 order-md-1 me-1 m-md-0"
+            >
+              <img
+                
+                src="./assets/images/hambergur.svg"
+                alt=""
+                width="32"
+              />
+            </button>
+            <a
+            style={{
+              "padding":"0px"
+            }}
+              
+              routerlink="/"
+              id="header_logo"
+              className="d-flex align-items-center col-3 me-3 text-dark text-decoration-none logo"
+              href="/"
+            >
+              <img
+                style={{
+                  "height":"100%"
+                }}
+                src="https://marketplace.canva.com/EAE2x-ic0Gk/1/0/1600w/canva-caduceus-logo%2Chealth-logo%2Cmedical-logo-2lhCTZ-v9hc.jpg"
+                alt=""
+                width="102"
+              />
+            </a>
+            <div
+              
+              className="col-7 col-lg-8 text-end d-flex align-items-center justify-content-end ms-md-4 ms-lg-2"
+            >
+            
+              <div
+                
+                className="dropdown chat d-flex align-items-center d-none d-md-flex"
+              >
+               
+                <ul
+                  
+                  aria-labelledby="header_needhelp"
+                  className="dropdown-menu"
+                >
+                
+                </ul>
+              </div>
+              {location.pathname !== '/doctorlogin' && location.pathname !== '/doctorsignup' && (
+  <button className="btn btn-primary" type="button" onClick={() => handleClick(buttonText)}>
+    {buttonText}
+  </button>
+)}
+
+           
+           
+             
+            </div>
+          </div>
+       
+        </header>
+    
+      
+      </app-header>
     </>
   );
 }
 
 export default Navbar;
+
 
 

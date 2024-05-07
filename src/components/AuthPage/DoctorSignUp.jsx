@@ -16,7 +16,10 @@ function DoctorSignUp() {
     password: '',
     specialities: '',
     experience: '',
-    qualification: ''
+    qualification: '',
+    locality:'',
+    gender:'',
+    seat:''
   });
 
   const handleChange = (e) => {
@@ -36,7 +39,7 @@ function DoctorSignUp() {
   const Signup = (e) => {
     e.preventDefault();
     setLoading(true); 
-  
+  alert("Please wait ! It may take some time")
     dispatch(createuser(formData))
       .then((response) => {
         setLoading(false);
@@ -54,8 +57,29 @@ function DoctorSignUp() {
   
   return (
     <>
+      
+
+
       <Navbar />
-      <div className="container main" style={{ width: '40%' }}>
+      {loading ? (
+        <div
+          style={{
+            height: "100vh",
+            width: "100vw",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{ height: "10vh" }}
+            src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"
+            alt=""
+          />
+          {/* <p>Loading....</p> */}
+        </div>
+      ):(
+        <div className="container main my-3">
         <div className="forms ">
           <h2>Create Doctor Account</h2>
           <hr />
@@ -133,11 +157,60 @@ function DoctorSignUp() {
                 required
               />
             </div>
+
+
+
+            <div className="mb-3">
+              <label htmlFor="locality" className="form-label">Locality</label>
+              <input
+                name='locality'
+                type="text"
+                className="form-control"
+                id="locality"
+                value={formData.locality}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+
+
+            <div className="mb-3">
+              <label htmlFor="Weekdays" className="form-label">Weekdays (eg.SUN-MON)</label>
+              <input
+                name='seat'
+                type="text"
+                className="form-control"
+                id="seat"
+                value={formData.seat}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+
+            <div className="mb-3">
+              <label htmlFor="gender" className="form-label">Gender (Type Male/Female)</label>
+              <input
+                name='gender'
+                type="text"
+                className="form-control"
+                id="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <button type="submit" className="btn btn-primary">Sign Up</button>
             <p className='mb-0'>Already have an account? <Link to="/doctorlogin">Login</Link></p>
           </form>
         </div>
       </div>
+      )
+    }
+
+
+     
     </>
   );
 }

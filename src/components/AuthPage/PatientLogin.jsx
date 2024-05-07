@@ -67,7 +67,7 @@ function PatientLogin() {
         </div>
       )):(
 
-      <div className="container main" style={{ width: "30%" }}>
+      <div className="container main my-5" style={{ width: "30%" }}>
         <div className="forms ">
           <h2>Login As Patient</h2>
           <hr/>

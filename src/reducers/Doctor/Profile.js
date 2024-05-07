@@ -20,7 +20,7 @@ const EditProfile = createAsyncThunk(
     try {
      
         const { fieldName, value } = data;
-        const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/doctor/updateprofile`, {
+        const response = await fetch(`https://hospital-backend-3.onrender.com/api/doctor/updateprofile`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

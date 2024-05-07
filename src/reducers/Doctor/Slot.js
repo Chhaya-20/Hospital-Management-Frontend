@@ -11,7 +11,7 @@ const AddSlots = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const { start, end } = data;
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/doctor/addslot", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/doctor/addslot", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const BookSlot =  createAsyncThunk(
   "bookslot",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/doctor/viewbooked", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/doctor/viewbooked", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ const DeleteSlot = createAsyncThunk(
   "deleteslot",
   async (data, { rejectWithValue }) => {
     try {
-      const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/doctor/delete/${data}`, {
+      const response = await fetch(`https://hospital-backend-3.onrender.com/api/doctor/delete/${data}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +101,7 @@ const EditSlot = createAsyncThunk(
     try {
       const {id,startTime,endTime}=data;
       //console.log(data)
-      const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/doctor/editslot/${id}`, {
+      const response = await fetch(`https://hospital-backend-3.onrender.com/api/doctor/editslot/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
