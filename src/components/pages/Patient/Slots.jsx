@@ -1,9 +1,9 @@
 import React from 'react'
 
-function AllSlots() {
+function Slots() {
   return (
-    <div>AllSlots</div>
+    <div>Slots</div>
   )
 }
 
-export default AllSlots
+export default Slots

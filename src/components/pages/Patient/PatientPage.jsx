@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { getSlot,BookSlot } from "../../../reducers/Patient/Slots";
 import { useDispatch } from "react-redux";
-
+import { toast } from "react-toastify";
 function PatientPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
