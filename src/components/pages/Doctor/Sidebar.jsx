@@ -15,7 +15,8 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <img src="https://user-images.githubusercontent.com/100460788/215811132-40070d36-862a-4154-adc0-903c6fa65394.jpg" alt="Logo" width="45" height="45" className="d-inline-block align-text-top" />
+      <a href="/">      <img src="https://user-images.githubusercontent.com/100460788/215811132-40070d36-862a-4154-adc0-903c6fa65394.jpg" alt="Logo" width="45" height="45" className="d-inline-block align-text-top" /></a>
+
       <ul>
         <li><Link to='/doctorpage' className={location.pathname === '/doctorpage' ? 'active' : ''}>Your Slots</Link></li>
         <li><Link to='/addslot' className={location.pathname === '/addslot' ? 'active' : ''}>Add Slot</Link></li>

@@ -11,7 +11,7 @@ const getSlot = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
     
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/patient/viewslots", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/patient/viewslots", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const DeleteSlot = createAsyncThunk(
   async (data, { rejectWithValue }) => {
    
     try {
-      const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/patient/cancel/${data}`, {
+      const response = await fetch(`https://hospital-backend-3.onrender.com/api/patient/cancel/${data}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const BookSlot = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     console.log(data)
     try {
-      const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/patient/book/${data}`, {
+      const response = await fetch(`https://hospital-backend-3.onrender.com/api/patient/book/${data}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const ViewBookSlot = createAsyncThunk(
   "viewbookslot",
   async (_, { rejectWithValue }) => { // Destructure `rejectWithValue` from the second argument
     try {
-      const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/patient/bookslots`, {
+      const response = await fetch(`https://hospital-backend-3.onrender.com/api/patient/bookslots`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from 'react-redux';
 import { EditProfile } from '../../../reducers/Patient/Profile';
-
+import { toast } from 'react-toastify';
 function Profile1() {
   const navigate = useNavigate();
 
@@ -39,18 +39,18 @@ function Profile1() {
     .then((res)=>{
       if(res.type=="edit/rejected")
       {
-        alert(res.payload)
+        toast(res.payload)
       }
         
       else{
-        alert(res.payload.message)
+        toast(res.payload.message)
       }
         const updatedFormData = { ...formData, [fieldName]: "" };
         setFormData(updatedFormData); 
 
 
     }).catch((err)=>{
-        alert("Some Error Occured")
+        toast.error("Some Error Occured")
 
     })
   };

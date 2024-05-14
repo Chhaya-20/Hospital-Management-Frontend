@@ -4,7 +4,7 @@ import { Link , useNavigate } from 'react-router-dom';
 import { createuser } from '../../reducers/Patient/PatientAuth';
 import '../Styles/Login.css'
 import { useDispatch, useSelector } from 'react-redux';
-
+import { toast } from 'react-toastify';
 import Navbar from '../Navbar'
 
 function PatinetSignUp() {
@@ -40,18 +40,19 @@ function PatinetSignUp() {
 
   const SignUp = (e) => {
     e.preventDefault(); 
+    setLoading(true)
     dispatch(createuser(formData))
     .then((response) => {
       setLoading(false);
       if (response.payload.success) {
-        navigate('/patientpage');
+        navigate('/');
       } else {
-        alert(response.payload);
+        toast.error(response.payload);
       }
     })
     .catch((error) => {
       setLoading(false);
-      alert("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.");
     });
   };
 
@@ -60,6 +61,23 @@ function PatinetSignUp() {
   return (
     <>
     <Navbar/>
+    {loading ? (
+            <div
+              style={{
+                height: "80vh",
+                width: "90vw",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                style={{ height: "10vh" }}
+                src="https://i.gifer.com/origin/34/34338d26023e5515f6cc8969aa027bca.gif"
+                alt=""
+              />
+            </div>
+          ) :(
     <div className="container main my-5" style={{"width":"40%"}}>
      
       <div className="forms ">
@@ -104,6 +122,7 @@ function PatinetSignUp() {
   </form>
       </div>
     </div>
+          )}
      </>
   )
 }

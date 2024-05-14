@@ -5,7 +5,7 @@ import { DeleteSlot, EditSlot } from "../../../reducers/Doctor/Slot";
 import { useDispatch } from "react-redux";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-
+import { toast } from "react-toastify";
 function DoctorPage() {
   const dispatch = useDispatch();
   const [slots, setSlots] = useState([]);
@@ -38,7 +38,7 @@ function DoctorPage() {
           })
           .catch((error) => {
             setLoading(false);
-            alert("An error occurred. Please try again.");
+            toast.error("An error occurred. Please try again.");
           });
       }
     };
@@ -83,12 +83,12 @@ function DoctorPage() {
           })
           .catch((error) => {
             setLoading(false);
-            alert("An error occurred. Please try again.");
+          toast.error("An error occurred. Please try again.");
           });
       })
       .catch((error) => {
         setLoading(false);
-        alert("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       });
   };
 
@@ -110,12 +110,12 @@ function DoctorPage() {
             })
             .catch((error) => {
               setLoading(false);
-              alert("An error occurred. Please try again.");
+              toast.error("An error occurred. Please try again.");
             });
         })
         .catch((error) => {
           setLoading(false);
-          alert("An error occurred. Please try again.");
+          toast.error("An error occurred. Please try again.");
         });
     }
   };

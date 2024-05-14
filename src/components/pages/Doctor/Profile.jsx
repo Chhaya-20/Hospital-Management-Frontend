@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { useDispatch } from 'react-redux';
 import { EditProfile } from '../../../reducers/Doctor/Profile';
-
+import { toast } from 'react-toastify';
 function Profile() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -34,13 +34,13 @@ function Profile() {
     // Dispatch an action to update the profile with the new data
     dispatch(EditProfile({ fieldName, value: formData[fieldName] }))
     .then(()=>{
-        alert("Successfully Updated")
+        toast("Successfully Updated")
         const updatedFormData = { ...formData, [fieldName]: "" };
         setFormData(updatedFormData); 
 
 
     }).catch((err)=>{
-        alert("Some Error Occured")
+        toast.error("Some Error Occured")
 
     })
   };

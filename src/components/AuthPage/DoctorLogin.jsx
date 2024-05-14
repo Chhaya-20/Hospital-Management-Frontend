@@ -4,7 +4,7 @@ import { getuser } from "../../reducers/Doctor/DoctorAuth";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar";
 import "../Styles/Login.css";
-
+import { toast } from "react-toastify";
 function DoctorLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,14 +19,14 @@ function DoctorLogin() {
   //     navigate("/doctorpage");
       
   //   } else if (loginStatus === "error") {
-  //     alert("Login failed");
+  //     toast("Login failed");
   //   }
   // }, [loginStatus]);
 
   const login = async (e) => {
     e.preventDefault();
 
-    alert("Please Wait ! It may take some time ");
+    toast("Please Wait ! It may take some time ");
     setLoading(true);
 
     try {
@@ -42,20 +42,20 @@ function DoctorLogin() {
           }
           else{
             setLoading(false)
-            alert("An error occurred while logging in.");
+            toast.error("An error occurred while logging in.");
           }
         })
         .catch((error) => {
         
           console.error("Error:", error);
           setLoading(false);
-          alert("An error occurred while logging in.");
+          toast.error("An error occurred while logging in.");
         });
     } catch (error) {
    
       console.error("Error:", error);
       setLoading(false);
-      alert("An error occurred while logging in.");
+      toast.error("An error occurred while logging in.");
     }
     
   };

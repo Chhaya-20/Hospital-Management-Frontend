@@ -19,7 +19,7 @@ const EditProfile = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const { fieldName, value } = data;
-      const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/patient/editprofile`, {
+      const response = await fetch(`https://hospital-backend-3.onrender.com/api/patient/editprofile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -42,13 +42,13 @@ const EditProfile = createAsyncThunk(
   }
 );
 
-// const GetDoctor = createAsyncThunk(
+
 //   "getalldoctors",
 //   async ({ _,rejectWithValue }) => {
 //     console.log("here")
 //     try {
     
-//       const response = await fetch(`https://hospital-management-backend-2c62.onrender.com/api/patient/editprofile`)
+//       const response = await fetch(`https://hospital-backend-3.onrender.com/api/patient/editprofile`)
 // console.log(response);
 //       if (!response.ok) {
 //         const res = await response.json();
@@ -70,13 +70,14 @@ const GetDoctor = createAsyncThunk(
     console.log("here")
     try {
       const response = await fetch(`https://hospital-backend-3.onrender.com/api/doctor/getDoctors`);
-      console.log(response);
+    
       if (!response.ok) {
         const res = await response.json();
         throw new Error(res.message);
       }
 
       const responseData = await response.json();
+      console.log(responseData);
       return responseData; // Return the actual data if successful
     } catch (error) {
       // Handle any other errors and reject with a meaningful value

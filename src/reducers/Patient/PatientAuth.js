@@ -16,7 +16,7 @@ const getuser = createAsyncThunk(
       const { email, password } = data;
      
 
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/patient/login", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/patient/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const createuser = createAsyncThunk(
      
      
 
-      const response = await fetch("https://hospital-management-backend-2c62.onrender.com/api/patient/signup", {
+      const response = await fetch("https://hospital-backend-3.onrender.com/api/patient/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -128,6 +128,8 @@ export default PatientSlice.reducer;
 
 
 
+
+// https://hospital-backend-3.onrender.com
 
 
 

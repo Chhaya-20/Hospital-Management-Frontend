@@ -29,7 +29,7 @@ function PatientPage() {
       } catch (error) {
         console.log(error);
         setLoading(false);
-        alert("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       }
     };
 
@@ -56,12 +56,12 @@ console.log(id)
             .catch((error) => {
               console.log(error);
               setLoading(false);
-              alert("An error occurred. Please try again.");
+              toast.error("An error occurred. Please try again.");
             });
         })
         .catch((error) => {
           setLoading(false);
-          alert("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
         });
 
 
@@ -79,7 +79,7 @@ console.log(id)
             <div
               style={{
                 height: "100vh",
-                width: "100vw",
+                width: "70vw",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {BookSlot} from '../../../reducers/Doctor/Slot'
 import { useDispatch } from "react-redux";
 import Navbar from "./Navbar";
-
+import { toast } from "react-toastify";
 import './style.css'
 
 
@@ -33,7 +33,7 @@ function BookedSlot() {
         })
         .catch((error) => {
           setLoading(false);
-          alert("An error occurred. Please try again.");
+          toast.error("An error occurred. Please try again.");
         });
     }
   }, []);

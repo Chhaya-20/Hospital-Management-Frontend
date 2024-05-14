@@ -13,14 +13,16 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <img
+      <a href="/"><img
         src="https://user-images.githubusercontent.com/100460788/215811132-40070d36-862a-4154-adc0-903c6fa65394.jpg"
         alt="Logo"
         width="45"
         height="45"
         className="d-inline-block align-text-top"
-      />
+      /></a>
+      
       <ul>
+        <h4 style={{"color":"black" , "textDecoration":"underline"}}>Your Profile</h4>
         <li>
           <NavLink to="/allslots" className="sidebar-link" activeclassname="active">
             All Slots

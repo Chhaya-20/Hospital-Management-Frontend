@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../Navbar';
 import '../Styles/Login.css';
+import { toast } from 'react-toastify';
 
 function DoctorSignUp() {
   const [loading, setLoading] = useState(false); 
@@ -39,19 +40,19 @@ function DoctorSignUp() {
   const Signup = (e) => {
     e.preventDefault();
     setLoading(true); 
-  alert("Please wait ! It may take some time")
+toast("Please wait ! It may take some time")
     dispatch(createuser(formData))
       .then((response) => {
         setLoading(false);
         if (response.payload.success) {
           navigate('/doctorpage');
         } else {
-          alert(response.payload);
+          toast(response.payload);
         }
       })
       .catch((error) => {
         setLoading(false);
-        alert("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       });
   };
   

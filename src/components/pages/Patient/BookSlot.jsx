@@ -25,7 +25,7 @@ function BookSlot() {
       .catch((error) => {
        
         setLoading(false);
-        alert(error);
+        toast.error(error);
       });
 
   },[dispatch])
@@ -56,7 +56,7 @@ function BookSlot() {
       .catch((error) => {
         
         setLoading(false);
-        alert("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       });
   };
 
@@ -74,7 +74,7 @@ function BookSlot() {
             <div
               style={{
                 height: "100vh",
-                width: "100vw",
+                width: "70vw",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

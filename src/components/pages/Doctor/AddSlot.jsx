@@ -4,6 +4,7 @@ import { AddSlots } from '../../../reducers/Doctor/Slot'
 import Sidebar from './Sidebar';
 import './style.css'
 import Navbar from './Navbar';
+import { toast } from 'react-toastify';
 
 function AddSlot() {
   const [start, setstart] = useState("");
@@ -47,13 +48,13 @@ function AddSlot() {
       setLoading(false)
       if(response.payload.success==true){
         console.log(response.payload.message);
-        alert(response.payload.message)
+        toast(response.payload.message)
         setend("");
         setstart("")
       }
       else{
         console.log(response.payload);
-        alert(response.payload)
+        toast(response.payload)
       }
    
     
