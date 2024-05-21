@@ -15,7 +15,7 @@ function PatientLogin() {
   const location = useLocation();
   const loginStatus = useSelector((state) => state.Patient.status);
 
-console.log(location.state.from);
+
   
 
   const login = async (e) => {

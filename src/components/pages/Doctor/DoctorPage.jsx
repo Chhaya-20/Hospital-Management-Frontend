@@ -75,6 +75,7 @@ function DoctorPage() {
         dispatch(getSlot())
           .then((response) => {
             setLoading(false);
+            toast("Slot Successfully Deleted ! ")
             if (!response.payload || response.payload.length === 0) {
               setSlots([]);
             } else {
